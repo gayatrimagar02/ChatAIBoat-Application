@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="col-md-12 text-center">
+        <h1>Chat AI</h1>
+        <hr>
+        <ng-container *ngFor="let message of messages">
+            <div class="message" [ngClass]="{ 'from':message.auther === 'bot', 'to':message.auther === 'user' }">
+                {{message.content}}</div>
+        </ng-container>
+    </div>
+    <div class="cd-md-12 text-center">
+        <label *ngIf="messages.length == 0; elsedialogInfo" for="namefield">Your Message</label>
+        <input [(ngModel)]="value" (key.enter)="sendMessage()" type="text" class="form-control">
+        <button class="btn btn-primary" (click)="sendMessage()">Ask Chat AI</button>
+        <ng-template><span [className]="'float-right'">Total Messages: {{messages.length}}</span>
+        </ng-template>
+    </div>
+</div>
